@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import marked from 'marked';
 import styled, { css, injectGlobal } from 'react-emotion';
-
-import state from './components/state.js';
-import HtmlOutput from './components/HtmlOutput';
-import MarkupInput from './components/MarkupInput';
+import UserList from './components/UserList';
 
 injectGlobal`
   html, body {
@@ -38,19 +34,15 @@ const style = css({
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state = state
+    this.state = {}
   }
 
-  markup = (e) => this.setState({code: e.target.value})
-
   render() {
-    const markUp = marked(this.state.code);
     return (
       <div className={style}>
-        <h1 className="title">Markdown Previewer</h1>
+        <h1 className="title">FCC Leaderboard</h1>
         <Wrapper>
-          <MarkupInput code={this.state.code} markup={this.markup} />
-          <HtmlOutput markUp={markUp} />
+          <UserList />
         </Wrapper>
       </div>
     );
