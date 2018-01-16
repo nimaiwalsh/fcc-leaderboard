@@ -1,10 +1,11 @@
-# Markdown Previewer
+# FreeCodeCamp Leaderboard
 
 ## Finished project
-https://nimaiwalsh.github.io/markdown-previewer
+https://nimaiwalsh.github.io/fcc-leaderboard
 
 ## Built with
 React
+Redux
 CSS-in-JS using Emotion.js
 
 ## Project Overview
