@@ -5,7 +5,6 @@ import UserList from './components/UserList';
 injectGlobal`
   html, body {
     box-sizing: border-box;
-    background: linear-gradient(to right, #da4453, #89216b);
     margin: 0px;
     height: auto;
     font-family: 'Roboto', sans-serif;
