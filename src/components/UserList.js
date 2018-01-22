@@ -6,16 +6,20 @@ import User from './User'
 import { fetchUsers } from '../actions/index';
 
 class UserList extends Component {
+
   componentDidMount() {
-    this.props.fetchUsers();
+    this.props.fetchUsers(false);
   }
 
-  renderUser() {
+  renderUsers() {
     const { users } = this.props
-    
-    return users.map((user) => {
+
+    return users.map((user, ref) => {
+      console.log(ref)
       return (
         <User
+          key={ref}
+          rank={ref+1}
           username={user.username}
           alltime={user.alltime}
           recent={user.recent}
@@ -26,9 +30,24 @@ class UserList extends Component {
   }
 
   render() {
+    if(!this.props.users) {
+      return (<div>Loading...</div>)
+    }
     return (
       <div>
-        {this.renderUser()}
+        <table>
+          <thead>
+          <tr>
+            <th>Rank</th>
+            <th>FCC Name</th>
+            <th>Points in last 30 Days</th>
+            <th>All time points</th>
+          </tr>
+          </thead>
+          <tbody>
+          {this.renderUsers()}
+          </tbody>
+        </table>
       </div>
    )
   }

@@ -1,13 +1,19 @@
 import React from 'react';
+import { css } from 'react-emotion';
 
-export default ({username, alltime, recent, img}) => {
+const style = css({
+  '.fade': {
+    backgroundColor: 'red',
+  }
+})
+
+export default ({rank, username, alltime, recent, img}) => {  
   return (
-    <div>
-      <ul>
-        <li>{username}</li>
-        <li>{alltime}</li>
-        <li>{recent}</li>
-      </ul>
-    </div>
-  )
+    <tr>
+      <td>{rank}</td>
+      <td><img src={img} style={{width: '60px'}}/>{username}</td>
+      <td>{alltime}</td>
+      <td>{recent}</td>
+    </tr>
+  ) 
 }

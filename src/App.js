@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled, { css, injectGlobal } from 'react-emotion';
+
 import UserList from './components/UserList';
 
 injectGlobal`
@@ -13,16 +14,6 @@ injectGlobal`
     padding: 30px;
   };
 `
-const Wrapper = styled('div')({
-  display: 'grid',
-  gridGap: '5px',
-  gridTemplateColumns: 'repeat(2, 1fr)',
-  gridTemplateRows: 'auto',
-  [`@media (max-width: 576px)`]: {
-    gridTemplateColumns: '1fr',
-  }
-})
-
 const style = css({
   '.title': {
     fontSize: '2em',
@@ -40,9 +31,7 @@ class App extends Component {
     return (
       <div className={style}>
         <h1 className="title">FCC Leaderboard</h1>
-        <Wrapper>
-          <UserList />
-        </Wrapper>
+        <UserList />
       </div>
     );
   }
