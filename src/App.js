@@ -3,6 +3,26 @@ import styled, { css, injectGlobal } from 'react-emotion';
 
 import UserList from './components/UserList';
 
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+
+  render() {
+    return (
+      <div className={style}>
+        <h1 className="title">FCC Leaderboard</h1>
+        <Container>
+          <UserList />
+        </Container>
+      </div>
+    );
+  }
+}
+
+export default App;
+
 injectGlobal`
   html, body {
     box-sizing: border-box;
@@ -15,26 +35,14 @@ injectGlobal`
   };
 `
 const style = css({
-  '.title': {
+  '& .title': {
     fontSize: '2em',
     textShadow: '1px 2px 3px hsl(0, 0%, 92.9%)'
   }
 })
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
-
-  render() {
-    return (
-      <div className={style}>
-        <h1 className="title">FCC Leaderboard</h1>
-        <UserList />
-      </div>
-    );
-  }
-}
-
-export default App;
+const Container = styled('div')({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center'
+})
