@@ -11,8 +11,10 @@ class App extends Component {
 
   render() {
     return (
-      <div className={style}>
-        <h1 className="title">FCC Leaderboard</h1>
+      <div>
+        <Header>
+          <h1 className="title">FCC Leaderboard</h1>
+        </Header>
         <Container>
           <UserList />
         </Container>
@@ -30,19 +32,20 @@ injectGlobal`
     height: auto;
     font-family: 'Roboto', sans-serif;
   };
-  body {
-    padding: 30px;
-  };
 `
-const style = css({
+const Header = styled('div')({
+  backgroundColor: 'black',
   '& .title': {
     fontSize: '2em',
-    textShadow: '1px 2px 3px hsl(0, 0%, 92.9%)'
+    textShadow: '1px 2px 3px hsl(0, 0%, 92.9%)',
+    textAlign: 'center',
   }
 })
 
 const Container = styled('div')({
   display: 'flex',
   justifyContent: 'center',
-  alignItems: 'center'
+  alignItems: 'center',
 })
+
+

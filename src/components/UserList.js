@@ -66,11 +66,15 @@ const tableStyles = css({
   color: '#EAEAEA',
   borderCollapse: 'collapse',
   borderSpacing: '0',
+  '& td': {
+    padding: '0 2%',
+  },
   '& thead > tr > th': {
     backgroundColor: '#222222',
     color: '#00B75F',
+    fontSize: '1.3rem',
     textAlign: 'left',
-    padding: '30px 0'
+    padding: '30px 2%',
   },
   '& tbody > tr:nth-child(1n)': {
     backgroundColor: '#686868',
@@ -89,5 +93,11 @@ const tableStyles = css({
   },
   '& tbody > tr:last-child > td:first-child': {
     borderRadius: '0 0 0 10px'
+  },
+  '@media (max-width: 576px)': {
+    width: '90%',
+    '& thead > tr > th': {
+      fontSize: '1rem',
+    }
   }
 })
