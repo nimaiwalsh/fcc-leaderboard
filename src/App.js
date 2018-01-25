@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled, { css, injectGlobal } from 'react-emotion';
 
 import UserList from './components/UserList';
+import ListToggle from './components/ListToggle';
 
 class App extends Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class App extends Component {
         <Header>
           <h1 className="title">FCC Leaderboard</h1>
         </Header>
+        <ListToggle />
         <Container>
           <UserList />
         </Container>
@@ -46,6 +48,7 @@ const Container = styled('div')({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  padding: '20px',
 })
 
 
