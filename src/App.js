@@ -68,7 +68,7 @@ const Container = styled('div')({
   justifyContent: 'center',
   alignItems: 'center',
   padding: '20px',
-  backgroundColor: '#E0E0E0'
+  backgroundColor: '#FFF'
 })
 
 const togglepadding = css({
@@ -79,6 +79,11 @@ const togglepadding = css({
   },
   '& .ticked': {
     color: '#FF4D00',
+  },
+  '@media (max-width: 576px)': {
+    '& span': {
+      fontSize: '1rem', 
+    }
   }
 })
 
