@@ -6,8 +6,8 @@ export default ({rank, username, alltime, recent, img}) => {
     <tr>
       <td>{rank}</td>
       <td><div className={styles}><img src={img} />{username}</div></td>
-      <td>{alltime}</td>
       <td>{recent}</td>
+      <td>{alltime}</td>
     </tr>
   ) 
 }
@@ -17,8 +17,15 @@ const styles = css({
   alignItems: 'center',
   flexWrap: 'wrap',
   '& img': {
-    paddingRight: '10px',
+    margin: '10px 10px 10px 0px',
     width: '60px',
     height: '60px',
+    borderRadius: '50%',
+  },
+  '@media (max-width: 576px)': {
+    '& img': {
+      height: '30px',
+      width: '30px',
+    }
   }
 })

@@ -7,18 +7,31 @@ import ListToggle from './components/ListToggle';
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {listallCheck: false}
+  }
+
+  updateListallCheck(listall) {
+    this.setState({ listallCheck: listall })
   }
 
   render() {
+    //Highlight toggle text according to checked list
+    const { listallCheck } = this.state;
+    let classnameRecentpoints = (!listallCheck) ? 'ticked' : 'notick';
+    let classnameAlltimepoints = (listallCheck) ? 'ticked' : 'notick';
+
     return (
       <div>
         <Header>
           <h1 className="title">FCC Leaderboard</h1>
         </Header>
-        <ListToggle />
+        <Container className={togglepadding}>
+          <span className={classnameRecentpoints}>Recent points</span>
+            <ListToggle toggleTicked={this.updateListallCheck.bind(this)} />
+          <span className={classnameAlltimepoints}>All time points</span>
+        </Container>
         <Container>
-          <UserList />
+          <UserList classnameATP={classnameAlltimepoints} classnameRP={classnameRecentpoints}/>
         </Container>
       </div>
     );
@@ -37,10 +50,16 @@ injectGlobal`
 `
 const Header = styled('div')({
   backgroundColor: 'black',
+  height: '100px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
   '& .title': {
     fontSize: '2em',
-    textShadow: '1px 2px 3px hsl(0, 0%, 92.9%)',
+    padding: '0',
+    margin: '0',
     textAlign: 'center',
+    color: '#00B75F',
   }
 })
 
@@ -49,6 +68,18 @@ const Container = styled('div')({
   justifyContent: 'center',
   alignItems: 'center',
   padding: '20px',
+  backgroundColor: '#E0E0E0'
+})
+
+const togglepadding = css({
+  '& span': {
+    padding: '5px',
+    fontSize: '1.5rem',
+    color: '#00B75F'
+  },
+  '& .ticked': {
+    color: '#FF4D00',
+  }
 })
 
 

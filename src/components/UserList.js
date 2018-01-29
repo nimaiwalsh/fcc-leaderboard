@@ -10,7 +10,9 @@ class UserList extends Component {
   componentDidMount() {
     //Pass true to return Top points all time
     //Pass false to return last 30 days
-    this.props.fetchUsers(false);
+    this.props.fetchUsers(false, () => {
+      console.log('Request complete')
+    });
   }
 
   renderUsers() {
@@ -22,8 +24,8 @@ class UserList extends Component {
           key={ref}
           rank={ref+1}
           username={user.username}
-          alltime={user.alltime}
           recent={user.recent}
+          alltime={user.alltime}
           img={user.img}
         />
       )
@@ -40,8 +42,8 @@ class UserList extends Component {
           <tr>
             <th>Rank</th>
             <th>FCC Name</th>
-            <th>Points in last 30 Days</th>
-            <th>All time points</th>
+            <th className={ this.props.classnameRP }>Points in last 30 Days</th>
+            <th className={ this.props.classnameATP }>All time points</th>
           </tr>
           </thead>
           <tbody>
@@ -76,23 +78,29 @@ const tableStyles = css({
     textAlign: 'left',
     padding: '30px 2%',
   },
+  '& thead > tr > th.ticked': {
+    color: '#FF4D00',
+  },
   '& tbody > tr:nth-child(1n)': {
     backgroundColor: '#686868',
   },
   '& tbody > tr:nth-child(2n)': {
     backgroundColor: '#393939',
   },
-  '& thead > tr:first-child > th:first-child': {
-    borderRadius: '10px 0 0 0'
-  },
-  '& thead > tr:first-child > th:last-child': {
-    borderRadius: '0 10px 0 0'
+  '& tbody > tr:hover': {
+    backgroundColor: '#00C260',
   },
   '& tbody > tr:last-child > td:last-child': {
     borderRadius: '0 0 10px 0'
   },
   '& tbody > tr:last-child > td:first-child': {
     borderRadius: '0 0 0 10px'
+  },
+  '& thead > tr:first-child > th:first-child': {
+    borderRadius: '10px 0 0 0'
+  },
+  '& thead > tr:first-child > th:last-child': {
+    borderRadius: '0 10px 0 0'
   },
   '@media (max-width: 576px)': {
     width: '90%',
